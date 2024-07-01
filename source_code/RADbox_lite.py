@@ -1,5 +1,4 @@
-# This is some code to read inputs from the arduino and output is as a CSV.    # This will likely be kept until the bitter end lol
-# v1 contains the code to interface with the arduino/save the data as a CSV
+# Python code to interface with the RADbox lite model. Plots data in real time and saves it to a CSV file
 
 import sys
 import subprocess
@@ -9,7 +8,7 @@ import csv
 import time
 from datetime import datetime
 
-# The plotting stuff is a wee bit jank, so there is some code there that ignores an error message that should not matter
+# The plotting stuff is a wee bit jank, so there is some code there that ignores an error message doesn't matter 
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib import backend_bases
@@ -30,7 +29,7 @@ try:
         if "Arduino" in devi.description:
             arduino_port = devi.device
 
-    baud = 19200
+    baud = 115200 
     serial_connection = serial.Serial(arduino_port, baud)
 except:
     print("Please plug in the arduino.")
@@ -73,13 +72,11 @@ plt.xlabel("Time (s)", fontsize=14)
 plt.ylabel(r"CO$_2$ (ppm)", fontsize=14)
 plt.xticks(fontsize=12, rotation=45)
 plt.yticks(fontsize=12, rotation=0)
-# plt.legend(loc=(1.04, 1)) might be worth looking into legend manipulation
-# see: https://stackoverflow.com/questions/4700614/how-to-put-the-legend-outside-the-plot
 
 # The plot
 ln, = plt.plot(time_data, raw_data, '-o')
 
-# The following is to remove some navigation buttons that Scott thought were unhelpful
+# The following is to remove some navigation buttons 
 # Full list of navigation buttons: forward, back, pan, zoom, home, help, subplots, save
 buttons_names = ['forward', 'back', 'help', 'subplots']
 
@@ -158,3 +155,4 @@ if count < number_of_samples:
     file.close()
 
     print("Data collection stopped early!")
+

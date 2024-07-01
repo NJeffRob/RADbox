@@ -1,5 +1,4 @@
-# This is some code to read inputs from the arduino and output is as a CSV.    # This will likely be kept until the bitter end lol
-# v1 contains the code to interface with the arduino/save the data as a CSV
+# Python code to interface with the RADbox model. Plots data in real time and saves it to a CSV file
 
 import sys
 import subprocess
@@ -9,13 +8,13 @@ import csv
 import time
 from datetime import datetime
 
-# The plotting stuff is a wee bit jank, so there is some code there that ignores an error message that should not matter
+# The plotting stuff is a wee bit jank, so there is some code there that ignores an error message that doesn't matter
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib import backend_bases
 if not sys.warnoptions:
     import warnings
-    warnings.filterwarnings("ignore") # do not worry about this
+    warnings.filterwarnings("ignore") 
 plt.rcParams['toolbar'] = 'toolmanager'
 
 import seaborn as sns
@@ -78,8 +77,8 @@ fig.suptitle("Air Quality Levels Over Time", fontsize=16)
 ax5.set_xlabel("Time (s)", fontsize=14)
 
 ax1.set_ylabel(r"CO$_2$ (ppm)")
-ax2.set_ylabel("VOC (ppm)")
-ax3.set_ylabel(r"NO$_x$  (ppm)")
+ax2.set_ylabel("VOC (ppb)")
+ax3.set_ylabel(r"NO$_x$  (ppb)")
 ax4.set_ylabel(r"Temp ($^o$C)")
 ax5.set_ylabel("Humi (%RH)")
 
@@ -96,7 +95,7 @@ ln3, = ax3.plot(time_data, nox_raw_data, '-s', color="red")
 ln4, = ax4.plot(time_data, temp_raw_data, '-P', color="brown")
 ln5, = ax5.plot(time_data, humi_raw_data, '-*', color="slategrey")
 
-# The following is to remove some navigation buttons that Scott (the boss) thought were unhelpful
+# The following is to remove some navigation buttons 
 # Full list of navigation buttons: forward, back, pan, zoom, home, help, subplots, save
 buttons_names = ['forward', 'back', 'help', 'subplots']
 
@@ -131,7 +130,7 @@ def update(i):
         humi_raw_data.append(float(readings[4]))
         time_data.append(total_time)
 
-        print(f"Time: {total_time} (s), CO2: {float(readings[0])} (ppm), VOC: {float(readings[1])} (ppm), NOx: {float(readings[2])} (ppm), Temperature: {float(readings[3])} (\N{DEGREE SIGN}C), Humidity: {float(readings[4])} (%RH) \n")
+        print(f"Time: {total_time} (s), CO2: {float(readings[0])} (ppm), VOC: {float(readings[1])} (ppb), NOx: {float(readings[2])} (ppb), Temperature: {float(readings[3])} (\N{DEGREE SIGN}C), Humidity: {float(readings[4])} (%RH) \n")
     
         ln1.set_data(time_data, co2_raw_data)
         ln2.set_data(time_data, voc_raw_data)
@@ -183,7 +182,7 @@ def update(i):
 
         # Adding the data to the CSV we created earlier
         with open(csv_file, 'w', encoding='UTF8', newline='') as f:
-            data_headers = ["Time (s)", "CO2 (ppm)", "VOC (ppm)", "NOx (ppm)", "Temperature (oC)", "Humidity (%RH)"]
+            data_headers = ["Time (s)", "CO2 (ppm)", "VOC (ppb)", "NOx (ppb)", "Temperature (oC)", "Humidity (%RH)"]
 
             writer = csv.writer(f)
             writer.writerow(data_headers)
@@ -202,7 +201,7 @@ if count < number_of_samples:
 
     # Adding the data to the CSV we created earlier
     with open(csv_file, 'w', encoding='UTF8', newline='') as f:
-        data_headers = ["Time (s)", "CO2 (ppm)", "VOC (ppm)", "NOx (ppm)", "Temperature (oC)", "Humidity (%RH)"]
+        data_headers = ["Time (s)", "CO2 (ppm)", "VOC (ppb)", "NOx (ppb)", "Temperature (oC)", "Humidity (%RH)"]
 
         writer = csv.writer(f)
         writer.writerow(data_headers)
@@ -211,3 +210,4 @@ if count < number_of_samples:
     file.close()
 
     print("Data collection stopped early!")
+

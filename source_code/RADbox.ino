@@ -74,3 +74,4 @@ void loop() {
   
   delay(5000); // the CO2 sensor cannot go faster than one measurement every 5 seconds, therefore we include this delay
 }
+
