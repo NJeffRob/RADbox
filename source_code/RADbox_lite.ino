@@ -21,9 +21,9 @@ void setup() {
 
 void loop() {
   // CO2 sensor code
-  scd41.readMeasurement()
+  scd41.readMeasurement();
   float co2 = scd41.getCO2();
 
+  Serial.println(co2);
   delay(5000);
 }
-
