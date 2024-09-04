@@ -20,11 +20,24 @@ The source code (arduino and python) can be found in the "source_code" directory
   - (for RADbox) U8glib library v1.19.1 [U8glib library](https://github.com/olikraus/u8glib)
 
 Note that code was written in Python 3.11.9 and Arduino version 2.2.1.
-### Executable Installation
 
+Using the source code directly is possible so long as the user has a version of Python (at least 3.11) and Arduino is installed. Prepare the relevant Arduino by uploading the relevant .ino file to the board. For Python, simply run the following command in a terminal, or run it through a chosen IDE, to have it run:
+
+```python
+python  Radbox.py
+```
+or
+```python
+python Radbox_lite.py
+```
+
+Note that it's convenient to make a separate folder to both keep and run this code, as a .csv file will be created after every run.
+
+### Executable Installation
+You can find the Executables for both Windows and Linux under the *Releases* tab of this repository. To use these, first download and unzip them for your relevant operating system. Next, upload the relevant .ino file to the board. After this, the executable files can simply be run and the program will start. Note that it's convenient to make a separate folder to both keep and run the executable, as a .csv file will be created after every run.
 
 ### Use
-For a full guide, please see: *link to paper when it's publish*
+For a full guide, please see the published paper.
 
 
 
