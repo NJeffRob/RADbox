@@ -24,7 +24,7 @@ Note that code was written in Python 3.11.9 and Arduino version 2.2.1.
 Using the source code directly is possible so long as the user has a version of Python (at least 3.11) and Arduino is installed. Prepare the relevant Arduino by uploading the relevant .ino file to the board. For Python, simply run the following command in a terminal, or run it through a chosen IDE, to have it run:
 
 ```python
-python  Radbox.py
+python Radbox.py
 ```
 or
 ```python
