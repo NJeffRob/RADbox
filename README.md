@@ -37,7 +37,8 @@ Note that it's convenient to make a separate folder to both keep and run this co
 You can find the Executables for both Windows and Linux under the *Releases* tab of this repository. To use these, first download and unzip them for your relevant operating system. Next, upload the relevant .ino file to the board. After this, the executable files can simply be run and the program will start. Note that it's convenient to make a separate folder to both keep and run the executable, as a .csv file will be created after every run.
 
 ### Use
-For a full guide, please see the published paper.
+The RADbox was designed to teach students in the K-12 system about air-quality. It is capable of monitoring changes in CO~2~, VOCs, NO~x~, temperature and %humidity. To use the device, simply plug it in, run the software, and collect the relevant data (after appropridate setup - see [Source Code Installation](#source-code-installation) and [Executable Installation](#executable-installation)). For a thorough guide, please see the published paper.
+
 
 
 
